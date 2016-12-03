@@ -9,6 +9,12 @@
   </head>
 
   <body>
+  	<%= notice %>
+  	<%= alert %>
+
+  	<%= link_to "Ingresar", new_client_session_path %>
+  	<%= link_to "Registrar", new_client_registration_path %>
+  	<%= link_to "Salir", destroy_client_session_path, method: :delete %>
     <%= yield %>
   </body>
 </html>
