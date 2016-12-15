@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'companies/index'
+
+  resources :trucks
+  resources :companies
+  resources :products
   devise_for :clients
   root 'clients#index'
 
