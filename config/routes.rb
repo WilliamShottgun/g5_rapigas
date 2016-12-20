@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :users
+  get 'orders/index'
+
   get 'companies/index'
 
   resources :trucks
