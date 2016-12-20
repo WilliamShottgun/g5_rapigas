@@ -1,5 +1,5 @@
 class Client < ApplicationRecord
-	
+has_many :product_trucks
 			
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
