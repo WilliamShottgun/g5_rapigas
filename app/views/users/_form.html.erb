@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+  
+  <div class="field">
+      <%= f.label :company_id,"Compañia", :class => "h4" %><br />
+      <%= f.collection_select(:company_id, Company.all, :id, :name,{prompt: "Elegir Compañia"}, :class => "form-control")%>
+  </div>
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>

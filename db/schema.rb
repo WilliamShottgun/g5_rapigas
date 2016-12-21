@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161220221409) do
+ActiveRecord::Schema.define(version: 20161221003950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,12 +54,16 @@ ActiveRecord::Schema.define(version: 20161220221409) do
     t.string   "brand"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "company_id"
+    t.index ["company_id"], name: "index_products_on_company_id", using: :btree
   end
 
   create_table "trucks", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "company_id"
+    t.index ["company_id"], name: "index_trucks_on_company_id", using: :btree
   end
 
   create_table "user_trucks", force: :cascade do |t|
@@ -75,10 +79,15 @@ ActiveRecord::Schema.define(version: 20161220221409) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "company_id"
+    t.index ["company_id"], name: "index_users_on_company_id", using: :btree
   end
 
   add_foreign_key "product_trucks", "clients"
   add_foreign_key "product_trucks", "products"
+  add_foreign_key "products", "companies"
+  add_foreign_key "trucks", "companies"
   add_foreign_key "user_trucks", "trucks"
   add_foreign_key "user_trucks", "users"
+  add_foreign_key "users", "companies"
 end
