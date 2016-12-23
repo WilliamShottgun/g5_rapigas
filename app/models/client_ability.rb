@@ -1,16 +1,12 @@
 class ClientAbility
   include CanCan::Ability
 
-  def initialize(user)
+  def initialize(client)
     # Define abilities for the passed in user here. For example:
     #
-     user ||= User.new # guest user (not logged in)
-       if user.admin?
-         can :manage, :all
-       else
-         can :read, :all
-       end
-
+    client ||= Client.new # guest user (not logged in)
+    can :manage, Client, id: client.id
+     
 
     
     # The first argument to `can` is the action you are giving the user

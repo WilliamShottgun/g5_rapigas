@@ -1,6 +1,9 @@
 class ClientsController < ApplicationController
 
-  def client_search
-  	
-  end
+	def index
+
+		@products = Product.all	
+			
+	end
+
 end
