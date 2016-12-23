@@ -1,5 +1,8 @@
 class Product < ApplicationRecord
-	has_and_belongs_to_many :product_trucks
+	has_many :product_trucks
+	has_many :clients, through: :product_trucks
 	belongs_to :company
+	has_many :product_companies
+	has_many :companies, through: :product_companies
 
 end
