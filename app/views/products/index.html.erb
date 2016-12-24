@@ -20,11 +20,11 @@
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td>
-          <% if current_user %>
-            <%= form_for [product, Product_truck.new] do |f| %>
+          
+            <%= form_for [product, ProductTruck.new] do |f| %>
               <%= f.submit 'Comprar'%>
             <% end %>
-          <% end %>
+          
         </td>
       </tr>
     <% end %>

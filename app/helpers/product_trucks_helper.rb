@@ -1,0 +1,2 @@
+module ProductTrucksHelper
+end

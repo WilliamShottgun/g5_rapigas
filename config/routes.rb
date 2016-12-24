@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+ 
+
   devise_for :users
   resources :users
   get 'orders/index'
@@ -9,6 +11,10 @@ Rails.application.routes.draw do
   resources :companies
   resources :products
   devise_for :clients
+
+  resources :products, only: [:index, :show] do
+    resources :product_trucks, only: [:create]
+  end
   root 'products#index'
 
  # devise_for :clients
