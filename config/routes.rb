@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users
-  get 'orders/index'
+
 
   get 'companies/index'
 
@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   devise_for :clients
 
   resources :products, only: [:index, :show] do
-    resources :product_trucks, only: [:create]
+    resources :requests, only: [:create]
+
   end
+  resources :requests, except: [:create]
   root 'products#index'
 
  # devise_for :clients

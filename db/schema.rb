@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161223222739) do
+ActiveRecord::Schema.define(version: 20161224005304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,17 @@ ActiveRecord::Schema.define(version: 20161223222739) do
     t.index ["company_id"], name: "index_products_on_company_id", using: :btree
   end
 
+  create_table "requests", force: :cascade do |t|
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "client_id"
+    t.integer  "product_id"
+    t.index ["client_id"], name: "index_requests_on_client_id", using: :btree
+    t.index ["product_id"], name: "index_requests_on_product_id", using: :btree
+  end
+
   create_table "trucks", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -109,6 +120,8 @@ ActiveRecord::Schema.define(version: 20161223222739) do
   add_foreign_key "product_trucks", "clients"
   add_foreign_key "product_trucks", "products"
   add_foreign_key "products", "companies"
+  add_foreign_key "requests", "clients"
+  add_foreign_key "requests", "products"
   add_foreign_key "trucks", "companies"
   add_foreign_key "user_trucks", "trucks"
   add_foreign_key "user_trucks", "users"

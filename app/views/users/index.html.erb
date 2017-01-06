@@ -19,6 +19,15 @@
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+    
+
+    <% Request.all.each do |request| %>
+    <tr>
+      <td><%= request.client.email %></td>
+    </tr>
+      
+    <% end %>
+
   </tbody>
 </table>
 
