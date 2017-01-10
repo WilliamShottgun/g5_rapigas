@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
 
   get 'companies/index'
+  get 'mytrucks' => 'trucks#mytrucks'
+
 
   resources :trucks
   resources :companies

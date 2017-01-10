@@ -1,10 +1,15 @@
 class TrucksController < ApplicationController
   before_action :set_truck, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:index, :show]
 
   # GET /trucks
   # GET /trucks.json
   def index
     @trucks = Truck.all
+  end
+
+  def mytrucks      
+    @trucks = current_user.trucks   
   end
 
   # GET /trucks/1

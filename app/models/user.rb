@@ -4,5 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 	belongs_to :company
-	has_many :user_trucks
+	has_many :trucks
+	has_many :user_trucks, through: :trucks
 end

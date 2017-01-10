@@ -6,4 +6,15 @@ has_many :requests
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+after_create :create_cart
+
+
+  def actual_request
+    requests.last
+  end
+
+  def create_request
+    requests.build(status: 'opened')
+    save
+  end
 end
