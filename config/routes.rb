@@ -2,7 +2,6 @@ Rails.application.routes.draw do
  
 
   devise_for :users
-  resources :users
 
 
   get 'companies/index'
@@ -16,8 +15,8 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show] do
     resources :requests, only: [:create]
-
   end
+
   resources :requests, except: [:create]
   root 'products#index'
 

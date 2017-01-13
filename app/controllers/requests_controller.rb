@@ -29,6 +29,7 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     @request.product = @product
     @request.client = current_client
+    
 
     respond_to do |format|
       if @request.save

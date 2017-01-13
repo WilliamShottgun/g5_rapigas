@@ -1,12 +1,13 @@
 class Client < ApplicationRecord
-has_many :product_trucks
-has_many :requests
-			
+  has_many :product_trucks
+  has_many :requests
+  has_many :products, through: :requests
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-after_create :create_cart
+  :recoverable, :rememberable, :trackable, :validatable
+  after_create :create_cart
 
 
   def actual_request

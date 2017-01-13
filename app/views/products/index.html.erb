@@ -22,7 +22,7 @@
         <td>
           
             <%= form_for [product, Request.new] do |f| %>
-              <%= f.submit 'Comprar'%>
+              <%= f.submit 'Comprar', name:'request[hola]'%>
             <% end %>
           
         </td>
