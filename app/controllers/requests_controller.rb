@@ -28,8 +28,8 @@ class RequestsController < ApplicationController
     @product = Product.find(params[:product_id])
     @request = Request.new(request_params)
     @request.product = @product
-    @request.client = current_client
-    
+    @request.latitude = current_client.latitude
+    @request.longitude = current_client.longitude
 
     respond_to do |format|
       if @request.save

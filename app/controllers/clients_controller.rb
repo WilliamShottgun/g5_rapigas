@@ -5,5 +5,5 @@ class ClientsController < ApplicationController
 		@products = Product.all	
 			
 	end
-
+	
 end

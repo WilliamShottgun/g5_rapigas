@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
- 
+  devise_for :clients, controllers: {
+          registrations: 'clients/registrations'
+        }
 
   devise_for :users
-
-
+        
+ 
   get 'companies/index'
   get 'mytrucks' => 'trucks#mytrucks'
 
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
   resources :trucks
   resources :companies
   resources :products
-  devise_for :clients
+  
 
   resources :products, only: [:index, :show] do
     resources :requests, only: [:create]
