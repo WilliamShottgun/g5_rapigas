@@ -1,10 +1,13 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
 
+
   # GET /requests
   # GET /requests.json
   def index
-    @requests = Request.all
+    @truck = Truck.first
+    @requests = Request.near(@truck.latitude, @truck.longitude, 10, units: :km)
+
   end
 
   # GET /requests/1

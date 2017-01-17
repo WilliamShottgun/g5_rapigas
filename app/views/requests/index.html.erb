@@ -20,7 +20,6 @@
         <td><%= request.product.size %></td>
         <td><%= request.latitude %></td>
         <td><%= request.longitude %></td>
-        <td><%= link_to 'Show', request %></td>
         <td><%= link_to 'Edit', edit_request_path(request) %></td>
         <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -31,3 +30,38 @@
 <br>
 
 <%= link_to 'New Request', new_request_path %>
+
+<script>
+  setInterval(getLocation, 1000)
+
+  function updatePosition(position){
+    console.log("hola");
+
+    $.ajax({
+      url: '/trucks/<%= @truck.id %>',
+      type: 'PATCH',
+      dataType: 'script',
+      data: {'truck': {latitude: position.coords.latitude, longitude: position.coords.longitude}}
+    })
+    .done(function() {
+      console.log("success"); 
+   })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+    
+  }
+
+  function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(updatePosition);
+    } else {
+      console.log("error");
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+
+</script>

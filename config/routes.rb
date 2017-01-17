@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users
         
- 
+  get 'clients/get_coordinates'
   get 'companies/index'
   get 'mytrucks' => 'trucks#mytrucks'
 

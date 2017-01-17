@@ -1,6 +1,7 @@
 class TrucksController < ApplicationController
   before_action :set_truck, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show, :update]
+  
 
   # GET /trucks
   # GET /trucks.json
@@ -49,9 +50,11 @@ class TrucksController < ApplicationController
       if @truck.update(truck_params)
         format.html { redirect_to @truck, notice: 'Truck was successfully updated.' }
         format.json { render :show, status: :ok, location: @truck }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @truck.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -74,6 +77,6 @@ class TrucksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def truck_params
-      params.require(:truck).permit(:name, :company_id)
+      params.require(:truck).permit(:name, :company_id, :longitude, :latitude, :address)
     end
 end

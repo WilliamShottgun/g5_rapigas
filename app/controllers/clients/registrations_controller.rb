@@ -42,8 +42,8 @@ class Clients::RegistrationsController < Devise::RegistrationsController
    protected
 
    def configure_permitted_parameters
-     devise_parameter_sanitizer.permit(:sign_up, keys: [:latitude, :longitude])
-     devise_parameter_sanitizer.permit(:account_update, keys: [:latitude, :longitude])
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:address])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:address])
    end
 
   # If you have extra params to permit, append them to the sanitizer.
